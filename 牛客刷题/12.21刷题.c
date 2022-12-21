@@ -285,25 +285,141 @@
 //}
 
 
+//int main()
+//{
+//    int n, m, i, j, k;
+//    int arr[100][100] = { 0 };
+//    scanf("%d %d", &n, &m);
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < m; j++)
+//        {
+//            scanf("%d", &arr[i][j]);
+//        }
+//    }
+//    scanf("%d", &k);
+//    getchar();//拿掉缓冲区的\n，只有读字符才考虑
+//    int a,b;
+//    char t;
+//    for (i = 0; i < k; i++)//k次操作
+//    {
+//        //每一次操作的过程
+//        scanf("%c %d %d", &t, &a, &b);//a,b要交换的行或列
+//        //canf(" %c %d %d", &t, &a, &b);//%c前加上空格，可以消化掉空白字符，也是解决\n的一种方法
+//        if (t == 'r')//交换行
+//        {
+//            //有几列就交换几次
+//            for (j = 0; j < m; j++)
+//            {  
+//                //行元素交换
+//                int tmp = arr[a - 1][j];
+//                arr[a - 1][j] = arr[b - 1][j];
+//                arr[b - 1][j] = tmp;
+//            }
+//        }
+//        else if (t == 'c')//交换列
+//        {
+//            //有几行就交换几次
+//            for (j = 0; j < n; j++)
+//            {
+//                //列元素交换
+//                int tmp = arr[j][a - 1];
+//                arr[j][a - 1] = arr[j][b - 1];
+//                arr[j][b - 1] = tmp;
+//            }
+//        }
+//    }
+//    //打印输出
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < m; j++)
+//        {
+//            printf("%d ", arr[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
+//int main()
+//{
+//    int n, i, j;
+//    int arr[100][100] = { 0 };
+//    scanf("%d", &n);
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j < n; j++)
+//        {
+//            if (j == 0)
+//                arr[i][j] = 1;
+//            if (i == j)
+//                arr[i][j] = 1;
+//            if (i >= 2 && j >= 1)
+//            {
+//                arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+//            }
+//        }
+//    }
+//    for (i = 0; i < n; i++)
+//    {
+//        for (j = 0; j <= i; j++)
+//        {
+//            printf("%5d", arr[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
+
 int main()
 {
-    int n, m,i,j;
-    int arr[100][100] = { 0 };
-    scanf("%d %d", &n, &m);
-    for (i = 0; i < n; i++)
+    int n, i, j;
+    char arr[3][3] = { 0 };
+    scanf("%d", &n);
+    for (i = 0; i < 3; i++)
     {
-        for (j = 0; j < m; j++)
+        for (j = 0; j < 3; j++)
         {
-            scanf("%d", &arr[i][j]);
+            scanf("%c", &arr[i][j]);
+            getchar();
         }
     }
-    for (i = 0; i < m; i++)
+    //判断输赢
+    char flag = 'o';
+    for (i = 0; i < 3; i++)
     {
-        for (j = 0; j < n; j++)
+        //判断行
+        if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2] && arr[i][1] != 'o')
         {
-            printf("%d ", arr[j][i]);
+            flag = arr[i][1];
+            break;
         }
-        printf("\n");
+        //判断列
+        if (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i] && arr[1][i] != 'o')
+        {
+            flag = arr[1][i];
+            break;
+        }
+    }
+    if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2] && arr[1][1] != 'o')
+    {
+        flag = arr[1][1];
+    }
+    if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0] && arr[1][1] != 'o')
+    {
+        flag = arr[1][1];
+    }
+    if ('K' == flag)
+    {
+        printf("KiKi wins!\n");
+    }
+    else if ('B' == flag)
+    {
+        printf("BoBo wins!\n");
+    }
+    else
+    {
+        printf("No winner!\n");
     }
     return 0;
 }

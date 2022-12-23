@@ -17,8 +17,8 @@
 //{
 //	char arr[] = "abcdef";
 //	char* pc = arr;
-//	printf("%s\n", arr);
-//	printf("%s\n", pc);//p作为首地址打印字符串，直接打印一串，p是指针，*p是字符a
+//	printf("%s\n", arr);//arr作为首地址打印字符串，直接打印一串
+//	printf("%s\n", pc);//p作为首地址打印字符串，直接打印一串
 //	char* p = "abcdef";//"abcdef"是一个常量字符串，其实存的是首元素a的地址
 //	printf("%c\n", *p);//*p从首地址取出指针指向的’a’，打印出a
 //	printf("%s\n", p); //p作为首地址打印字符串，直接打印一串，p是指针，*p是字符a
@@ -47,5 +47,16 @@
 //	else
 //		printf("str3 and str4 are not same\n");
 //
+//	return 0;
+//}
+
+
+//回顾总结
+//int main()
+//{
+//	char ch = 'w';
+//	char* p = &ch;
+//	char* p2 = "abcdef";//把字符串赋值给p2时，实际上是把字符串首字符的地址赋给了p2，字符串的内容是不允许被修改的
+//	const char* p2 = "abcdef";//是最合理的方式，const锁定p2所指的内容不能被修改
 //	return 0;
 //}

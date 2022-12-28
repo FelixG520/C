@@ -351,32 +351,244 @@ E选手说：我第四，A第一
 比赛结束后，每位选手都说对了一半，请编程确定比赛的名次
 */   
 
+//int main()
+//{
+//	int a = 0, b = 0, c = 0, d = 0, e = 0;
+//	for (a = 1; a <= 5; a++)
+//	{
+//		for (b = 1; b <= 5; b++)
+//		{
+//			for (c = 1; c <= 5; c++)
+//			{
+//				for (d = 1; d <= 5; d++)
+//				{
+//					for (e = 1; e <= 5; e++)
+//					{
+//						if (((b==2) + (a==3) == 1) && 
+//							((b==2) + (e==4) == 1) && 
+//							((c==1) + (d==2) == 1) && 
+//							((c==5) + (d==3) == 1) && 
+//							((e==4) + (a==1) == 1))
+//						{
+//							if(a*b*c*d*e == 120)
+//								printf("a=%d b=%d c=%d d=%d e=%d", a, b, c, d, e);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+
+/*
+旋转字符串
+ABCD左旋一个字符得到BCDA
+ABCD左旋两个字符得到CDBA
+*/
+//void left_move(char arr, int k)
+
+//void left_move(char* arr, int k)
+//{
+//	int i = 0;
+//	int len = strlen(arr);
+//	for (i = 0; i < k; i++)
+//	{
+//		//左旋一个字符
+//		char tmp = *arr;
+//		int j = 0;
+//		for (j = 0; j < len - 1; j++)
+//		{
+//			*(arr + j) = *(arr + j + 1);
+//		}
+//		*(arr + len - 1) = tmp;
+//	}
+//}
+//
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	left_move(arr, 2);//arr数组名传参传的是首元素地址
+//	printf("%s", arr);
+//	return 0;
+//}
+
+/*
+三步翻转法
+ab cdef
+ba cdef
+ba fedc
+cdefab
+*/  
+//#include <assert.h>
+//void reverse(char *left,char*right)
+//{
+//	assert(left!=NULL);
+//	assert(right!= NULL);
+//	while (left<right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//
+//}
+//void left_move(char *arr,int k)
+//{
+//	assert(arr);
+//	int len = strlen(arr);
+//	reverse(arr,arr+k-1);//逆序左边
+//	reverse(arr+k,arr+len-1);//逆序右边
+//	reverse(arr,arr+len-1);//逆序整体
+//}
+//int main()
+//{
+//	char arr[] = "abcdef";
+//	left_move(arr, 2);//arr数组名传参传的是首元素地址
+//	printf("%s", arr);
+//	return 0;
+//}
+
+
+//判断是否为旋转过来的
+//int is_left_move(char* arr1,char* arr2)
+//{
+//	int len = strlen(arr1);
+//	int i;
+//	for (i = 0; i < len; i++)
+//	{
+//		left_move(arr1, i);
+//		int ret = strcmp(arr1, arr2);
+//		if (ret == 0)
+//			return 1;
+//	}
+//	return 0;
+//}
+//
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "bcdefa";
+//	int ret = is_left_move(arr1, arr2);
+//	if (ret == 1)
+//	{
+//		printf("Yes\n");
+//	}
+//	else
+//		printf("No\n");
+//	return 0;
+//}
+
+//abcdefabcdef -- 两个追加起来就包含所有的可能性
+//#include <string.h>
+//int is_left_move(char* arr1, char* arr2)
+//{
+//	int len1 = strlen(arr1);
+//	int len2 = strlen(arr2);
+//	if (len1 != len2)
+//		return 0;
+//	//1.在str1字符串中追加一个str1字符串
+//	strncat(arr1, arr1,6);
+//	//2.判断str2指向的字符串是否是str1指向的字符串的子串
+//	char* ret = strstr(arr1, arr2);
+//	if (ret == NULL)
+//	{
+//		return 0;
+//	}
+//	else
+//		return 1;
+//
+//}
+//
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "bcdefa";
+//	int ret = is_left_move(arr1, arr2);
+//	if (ret == 1)
+//	{
+//		printf("Yes\n");
+//	}
+//	else
+//		printf("No\n");
+//	return 0;
+//}
+
+/*
+有一个数字矩阵，从左到右递增，从上到下也递增,请编写程序找到某个数字
+1 2 3
+2 3 4
+3 4 5
+*/   
+
+//int FindNum(int arr[3][3], int k, int row, int col)
+//{
+//	int x = 0;
+//	int y = col - 1;
+//	while (x<=row-1 && y>=0)
+//	{
+//		if (arr[x][y] > k)
+//			y--;
+//		else if (arr[x][y] < k)//右上角的元素 < k
+//			x++;
+//		else
+//			return 1;
+//
+//	}
+//	return 0;
+//}
+//
+//int main()
+//{
+//	int arr[3][3] = { {1,2,3} ,{4,5,6}, {7,8,9} };
+//	int k = 7;
+//	int ret = FindNum(arr, k,3, 3);
+//	if (ret == 1)
+//	{
+//		printf("找到了!");
+//	}
+//	else
+//		printf("找不到.");
+//	return 0;
+//}
+
+int FindNum(int arr[3][3], int k, int * px, int* py)
+{
+	int x = 0;
+	int y = *py - 1;
+	while (x<= *px -1 && y>=0)
+	{
+		if (arr[x][y] > k)
+			y--;
+		else if (arr[x][y] < k)//右上角的元素 < k
+			x++;
+		else
+		{
+			*px = x;
+			*py = y;
+			return 1;
+		}
+
+	}
+	return 0;
+}
+
 int main()
 {
-	int a = 0, b = 0, c = 0, d = 0, e = 0;
-	for (a = 1; a <= 5; a++)
+	int arr[3][3] = { {1,2,3} ,{4,5,6}, {7,8,9} };
+	int k = 7;
+	int x = 3, y = 3;
+	//返回型参数
+	int ret = FindNum(arr, k,&x, &y);
+	if (ret == 1)
 	{
-		for (b = 1; b <= 5; b++)
-		{
-			for (c = 1; c <= 5; c++)
-			{
-				for (d = 1; d <= 5; d++)
-				{
-					for (e = 1; e <= 5; e++)
-					{
-						if (((b==2) + (a==3) == 1) && 
-							((b==2) + (e==4) == 1) && 
-							((c==1) + (d==2) == 1) && 
-							((c==5) + (d==3) == 1) && 
-							((e==4) + (a==1) == 1))
-						{
-							if(a*b*c*d*e == 120)
-								printf("a=%d b=%d c=%d d=%d e=%d", a, b, c, d, e);
-						}
-					}
-				}
-			}
-		}
+		printf("找到了!\n");
+		printf("下标是:%d %d",x,y);
 	}
+	else
+		printf("找不到.");
 	return 0;
 }

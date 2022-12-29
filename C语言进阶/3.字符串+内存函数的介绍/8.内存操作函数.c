@@ -68,11 +68,25 @@ void * memmove ( void * destination, const void * source, size_t num );
 //{
 //	void* ret = dest;
 //	assert(dest && src);
-//	while (num--)
+//	if (dest < src)
 //	{
-//		*(char*)dest = *(char*)src;//强制类型转换char，每次拷贝一个字节，一共num次
-//		++(char*)dest;
-//		++(char*)src;
+//		//前 -> 后
+//		while (num--)
+//		{
+//			*(char*)dest = *(char*)src;//强制类型转换char，每次拷贝一个字节，一共num次
+//			++(char*)dest;
+//			++(char*)src;
+//		}
+//	}
+//	else
+//	{
+//		//后 -> 前
+//		while (num--)
+//		{
+//			*((char*)dest + num) = *((char*)src+num);
+//			++(char*)dest;
+//			++(char*)src;
+//		}
 //	}
 //	return ret;
 //}
@@ -100,3 +114,21 @@ int memcmp ( const void * ptr1,
 |                                                                                                |
 |================================================================================================|
 */
+
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	int arr2[] = { 1,2,5,4,3 };
+//	int ret = memcmp(arr1, arr2, 8);//处理内存重叠情况
+//	printf("%d\n ",ret);
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	char arr[] ="";
+//	memset(arr, '#', 10);
+//	printf("%s\n ", arr);
+//	return 0;
+//}

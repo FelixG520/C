@@ -2,84 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
-/*
-·求字符串长度
-		strlen
-·长度不受限制的字符串函数
-		strcpy
-		strcat
-		strcmp
-·长度受限制的字符串函数介绍
-		strncpy
-		strncat
-		strncmp
-·字符串查找
-		strstr
-		strtok
-·错误信息报告
-		strerror
-·字符操作
-·内存操作函数
-		memcpy
-		memmove
-		memset
-		memcmp
-*/ 
-
-
-
-/*
-0. 前言
-C语言中对字符和字符串的处理很是频繁，但是C语言本身是没有字符串类型的，字符串通常放在
-常量字符串 中或者 字符数组 中。
-字符串常量 适用于那些对它不做修改的字符串函数.
-*/  
-
-/*=================================== 1.1 strlen ====================================
-size_t strlen(const char* str);
-size_t == unsigned int
-
-  |===============================================================================================================|
-  |                                                                                                               |         
-  | ·字符串以 '\0' 作为结束标志，strlen函数返回的是在字符串中 '\0' 前面出现的字符个数（不包含 '\0' )。           |
-  | ·参数指向的字符串必须要以 '\0' 结束。                                                                        | 
-  | ·注意函数的返回值为size_t，是无符号的（ 易错 ）                                                              |
-  | ·学会strlen函数的模拟实现                                                                                    | 
-  |                                                                                                               |
-  |===============================================================================================================|
-
-*/
-
-//模拟实现strlen
-//my_strlen(const char* str)
-//{
-//	int count = 0;
-//	assert(str != NULL);
-//	while (*str != '\0')
-//	//while(*str)
-//	{
-//		count++;
-//		str++;
-//	}
-//	return count;
-//}
-//int main()
-//{
-//	int len = my_strlen("abcdef");
-//	printf("%d", len);
-//	return 0;
-//}
-
-
-//int main()
-//{
-//	if (strlen("abc") - strlen("abcdef") > 0)//strlen是无符号数
-//		printf("hehe\n");
-//	else
-//		printf("haha\n");
-//	return 0;
-//}
-
 
 /*=================================== 1.2 strcpy ====================================
 char* strcpy(char* destination, const char* source);
@@ -90,10 +12,10 @@ char* strcpy(char* destination, const char* source);
 |   terminating null character (and stopping at that point).                                                |
 | ·源字符串必须以 '\0' 结束。                                                                              |
 | ·会将源字符串中的 '\0' 拷贝到目标空间.                                                                   |
-| ·目标空间必须足够大，以确保能存放源字符串。                                                              |  
+| ·目标空间必须足够大，以确保能存放源字符串。                                                              |
 | ·目标空间必须可变。                                                                                      |
 | ·学会模拟实现                                                                                            |
-|                                                                                                           | 
+|                                                                                                           |
 |===========================================================================================================|
 
 */
@@ -194,7 +116,7 @@ int strcmp ( const char * str1, const char * str2 );
 | ·标准规定：                                                                                              |
 |	·第一个字符串大于第二个字符串，则返回大于0的数字.                                                      |
 |	·第一个字符串等于第二个字符串，则返回0                                                                 |
-|	·第一个字符串小于第二个字符串，则返回小于0的数字                                                       |  
+|	·第一个字符串小于第二个字符串，则返回小于0的数字                                                       |
 |	·那么如何判断两个字符串？                                                                              |
 |                                                                                                           |
 |===========================================================================================================|
@@ -227,57 +149,3 @@ int strcmp ( const char * str1, const char * str2 );
 //	printf("%d\n", ret);
 //	return 0;
 //}
-
-/*=================================== 1.5 strncpy ====================================
-char * strncpy ( char * destination, const char * source, size_t num );
-
-
-|===========================================================================================================|
-|                                                                                                           |
-| ·Copies the first num characters of source to destination. If the end of the source C string             |
-|   (which is signaled by a null-character) is found before num characters have been copied,                |
-|   destination is padded with zeros until a total of num characters have been written to it.               |
-| ·拷贝num个字符从源字符串到目标空间。                                                                     |
-| ·如果源字符串的长度小于num，则拷贝完源字符串之后，在目标的后边追加0，直到num个。                       | 
-|                                                                                                           |
-|===========================================================================================================|
-
-*/
-
-//int main()
-//{
-//	char arr1[10] = "abcef";
-//	char arr2[] = "hello Felix";
-//	//strncpy(arr1, arr2, 4);
-//
-//	char arr3[] = "he";
-//	strncpy(arr1, arr3, 6);//长度不够，其余位补\0
-//	return 0;
-//}
-
-
-
-
-/*=================================== 1.6 strncat ====================================
-char * strncpy ( char * destination, const char * source, size_t num );
-
-
-|===========================================================================================================|
-|                                                                                                           |
-| ·Appends the first num characters of source to destination, plus a terminating null-character.           |
-| ·If the length of the C string in source is less than num, only the content up to the terminating        |
-|   null-character is copied.                                                                               |
-|                                                                                                           |
-|===========================================================================================================|
-
-*/
-
-int main()
-{
-	char arr1[30] = "hello\0xxxxxxxxxxxxxxxxxxxx";
-	char arr2[] = "world";
-	//strncat(arr1, arr2, 3);
-	strncat(arr1, arr2, 8);////长度不够，其余位补\0
-	printf("%s\n", arr1);
-	return 0;
-}

@@ -34,23 +34,23 @@
 
  
 //一个例子
-struct S
-{
-	char a : 3;
-	char b : 4;
-	char c : 5;
-	char d : 4;
-};
-
-int main()
-{
-	struct S s = { 0 };
-	s.a = 10;
-	s.b = 20;
-	s.c = 3;
-	s.d = 4;
-	return 0;
-}
+//struct S
+//{
+//	char a : 3;
+//	char b : 4;
+//	char c : 5;
+//	char d : 4;
+//};
+//
+//int main()
+//{
+//	struct S s = { 0 };
+//	s.a = 10;
+//	s.b = 20;
+//	s.c = 3;
+//	s.d = 4;
+//	return 0;
+//}
 
 /************************************* 2.2 位段的内存分配 *********************************1. 位段的成员可以是 int unsigned int signed int 或者是 char （属于整形家族）类型
 1. int 位段被当成有符号数还是无符号数是不确定的。

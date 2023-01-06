@@ -1,5 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-#include <stdio.h>
+
 /*
 3.2.3 #define 替换规则
 在程序中扩展#define定义符号和宏时，需要涉及几个步骤。
